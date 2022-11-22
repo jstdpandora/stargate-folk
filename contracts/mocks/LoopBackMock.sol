@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity 0.7.6;
+pragma solidity ^ 0.8.0;
 pragma abicoder v2;
 
 import "../interfaces/IStargateReceiver.sol";
@@ -40,7 +40,7 @@ contract LoopBackMock is IStargateReceiver {
         (uint256 srcPoolId, uint256 dstPoolId) = abi.decode(payload, (uint256, uint256));
 
         (uint256 nativeFee, ) = router.quoteLayerZeroFee(_chainId, 1, srcAddress, "", txObj);
-        router.swap{value: nativeFee}(_chainId, srcPoolId, dstPoolId, address(this), halfAmount, 0, txObj, srcAddress, bytes("0x"));
+        router.swap{value: nativeFee}(_chainId, srcPoolId, dstPoolId, payable(address(this)), halfAmount, 0, txObj, srcAddress, bytes("0x"));
 
         emit LoopBack(srcAddress, srcPoolId, dstPoolId, halfAmount);
     }

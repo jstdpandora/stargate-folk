@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity >= 0.8.0;
+pragma solidity ^ 0.8.0;
 // imports
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -70,7 +70,7 @@ contract LPStaking is Ownable {
         uint256 _startBlock,
         uint256 _bonusEndBlock
     ) {
-        require(_startBlock >= block.number, "LPStaking: _startBlock must be >= current block");
+        require(_startBlock >= block.number, "LPStaking: _startBlock must be ^ current block");
         require(_bonusEndBlock >= _startBlock, "LPStaking: _bonusEndBlock must be > than _startBlock");
         require(address(_stargate) != address(0x0), "Stargate: _stargate cannot be 0x0");
         stargate = _stargate;

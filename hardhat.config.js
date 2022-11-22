@@ -1,62 +1,60 @@
-require("dotenv").config();
+require("dotenv").config()
 
-require("@nomiclabs/hardhat-etherscan");
-require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-solhint");
-require("@nomiclabs/hardhat-web3");
-require("hardhat-gas-reporter");
-require("solidity-coverage");
-require("hardhat-contract-sizer");
-require("hardhat-tracer");
-require("@primitivefi/hardhat-dodoc");
-require("hardhat-deploy");
-require("hardhat-deploy-ethers");
-require("hardhat-spdx-license-identifier");
+require("@nomiclabs/hardhat-etherscan")
+require("@nomiclabs/hardhat-waffle")
+require("@nomiclabs/hardhat-solhint")
+require("@nomiclabs/hardhat-web3")
+require("hardhat-gas-reporter")
+require("solidity-coverage")
+require("hardhat-contract-sizer")
+require("hardhat-tracer")
+require("@primitivefi/hardhat-dodoc")
+require("hardhat-deploy")
+require("hardhat-deploy-ethers")
+require("hardhat-spdx-license-identifier")
 
 // const infuraProjectId = process.env.INFURA_PROJECT_ID;
 // console.log(`infuraProjectId: ${infuraProjectId}`);
 
-
 // custom helper tasks
-require("./tasks/addLiquidity");
-require("./tasks/sendCredits");
-require("./tasks/swap");
-require("./tasks/createChainPath");
-require("./tasks/setWeightForChainPath");
-require("./tasks/setBridge");
-require("./tasks/getBridge");
-require("./tasks/mintTokens");
-require("./tasks/getPool");
-require("./tasks/addLPStakingPool");
-require("./tasks/createPools");
-require("./tasks/createChainPaths");
-require("./tasks/activateChainPath");
-require("./tasks/activateChainPaths");
-require("./tasks/deployToken");
-require("./tasks/testnetSwap");
-require("./tasks/wireBridges");
-require("./tasks/wireStargateTokens");
-require("./tasks/sendStargateTokens");
-require("./tasks/sendCreditsAll");
-require("./tasks/getChainPath");
+require("./tasks/addLiquidity")
+require("./tasks/sendCredits")
+require("./tasks/swap")
+require("./tasks/createChainPath")
+require("./tasks/setWeightForChainPath")
+require("./tasks/setBridge")
+require("./tasks/getBridge")
+require("./tasks/mintTokens")
+require("./tasks/getPool")
+require("./tasks/addLPStakingPool")
+require("./tasks/createPools")
+require("./tasks/createChainPaths")
+require("./tasks/activateChainPath")
+require("./tasks/activateChainPaths")
+require("./tasks/deployToken")
+require("./tasks/testnetSwap")
+require("./tasks/wireBridges")
+require("./tasks/wireStargateTokens")
+require("./tasks/sendStargateTokens")
+require("./tasks/sendCreditsAll")
+require("./tasks/getChainPath")
 require("./tasks/getFeeVersion")
 require("./tasks")
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more4
 
-
 function getMnemonic(networkName) {
     if (networkName) {
-        const mnemonic = process.env['MNEMONIC_' + networkName.toUpperCase()]
-        if (mnemonic && mnemonic !== '') {
+        const mnemonic = process.env["MNEMONIC_" + networkName.toUpperCase()]
+        if (mnemonic && mnemonic !== "") {
             return mnemonic
         }
     }
 
     const mnemonic = process.env.MNEMONIC
-    if (!mnemonic || mnemonic === '') {
-        return 'test test test test test test test test test test test junk'
+    if (!mnemonic || mnemonic === "") {
+        return "test test test test test test test test test test test junk"
     }
 
     return mnemonic
@@ -71,7 +69,7 @@ function accounts(chainKey) {
  */
 module.exports = {
     solidity: {
-        version: "0.7.6",
+        version: "0.8.1",
         settings: {
             optimizer: {
                 enabled: true,
@@ -84,7 +82,6 @@ module.exports = {
         runOnCompile: true,
         disambiguatePaths: false,
     },
-
 
     // for hardhat-deploy
     namedAccounts: {
@@ -111,8 +108,8 @@ module.exports = {
             chainId: 4,
             accounts: accounts(),
         },
-        'bsc-testnet': {
-            url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+        "bsc-testnet": {
+            url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
             chainId: 97,
             accounts: accounts(),
         },
@@ -126,21 +123,21 @@ module.exports = {
             chainId: 80001,
             accounts: accounts(),
         },
-        'arbitrum-rinkeby': {
+        "arbitrum-rinkeby": {
             url: `https://rinkeby.arbitrum.io/rpc`,
             chainId: 421611,
             accounts: accounts(),
         },
-        'optimism-kovan': {
+        "optimism-kovan": {
             url: `https://kovan.optimism.io/`,
             chainId: 69,
             accounts: accounts(),
         },
-        'fantom-testnet': {
+        "fantom-testnet": {
             url: `https://rpc.testnet.fantom.network/`,
             chainId: 4002,
             accounts: accounts(),
-        }
+        },
     },
     mocha: {
         timeout: 500000,
@@ -152,4 +149,4 @@ module.exports = {
     etherscan: {
         apiKey: process.env.ETHERSCAN_API_KEY,
     },
-};
+}

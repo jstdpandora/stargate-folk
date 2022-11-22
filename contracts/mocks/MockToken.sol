@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity 0.7.6;
+pragma solidity ^ 0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
@@ -10,7 +10,6 @@ contract MockToken is ERC20 {
         string memory symbol_,
         uint8 decimals_
     ) ERC20(name_, symbol_) {
-        _setupDecimals(decimals_);
         _mint(msg.sender, 1000000000 * (10**decimals_));
     }
 
