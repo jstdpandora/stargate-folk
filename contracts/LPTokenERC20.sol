@@ -2,7 +2,7 @@
 
 pragma solidity >= 0.8.0;
 // libraries
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract LPTokenERC20 {
     using SafeMath for uint256;
@@ -92,9 +92,7 @@ contract LPTokenERC20 {
         address to,
         uint256 value
     ) external returns (bool) {
-        if (allowance[from][msg.sender] != uint256(-1)) {
-            allowance[from][msg.sender] = allowance[from][msg.sender].sub(value);
-        }
+        allowance[from][msg.sender] = allowance[from][msg.sender].sub(value);
         _transfer(from, to, value);
         return true;
     }

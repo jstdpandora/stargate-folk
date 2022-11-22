@@ -5,12 +5,12 @@ pragma abicoder v2;
 
 // imports
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./LPTokenERC20.sol";
 import "./interfaces/IStargateFeeLibrary.sol";
 
 // libraries
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 /// Pool contracts on other chains and managed by the Stargate protocol.
 contract Pool is LPTokenERC20, ReentrancyGuard {

@@ -10,7 +10,7 @@ import "./Pool.sol";
 import "./Router.sol";
 
 // libraries
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "./interfaces/ILayerZeroReceiver.sol";
 import "./interfaces/ILayerZeroEndpoint.sol";
 import "./interfaces/ILayerZeroUserApplicationConfig.sol";

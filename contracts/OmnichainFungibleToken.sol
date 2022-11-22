@@ -77,7 +77,7 @@ contract OmnichainFungibleToken is ERC20, Ownable, ILayerZeroReceiver, ILayerZer
             _dstChainId, // destination chainId
             dstContractLookup[_dstChainId], // destination UA address
             payload, // abi.encode()'ed bytes
-            msg.sender, // refund address (LayerZero will refund any extra gas back to msg.sender
+            payable(msg.sender), // refund address (LayerZero will refund any extra gas back to msg.sender
             _zroPaymentAddress, // 'zroPaymentAddress'
             _adapterParam // 'adapterParameters'
         );

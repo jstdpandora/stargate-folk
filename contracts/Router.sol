@@ -5,7 +5,7 @@ pragma abicoder v2;
 
 // imports
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./Factory.sol";
 import "./Pool.sol";
 import "./Bridge.sol";
@@ -16,7 +16,7 @@ import "./interfaces/IStargateRouter.sol";
 import "./interfaces/IStargateReceiver.sol";
 
 // libraries
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract Router is IStargateRouter, Ownable, ReentrancyGuard {
     using SafeMath for uint256;
